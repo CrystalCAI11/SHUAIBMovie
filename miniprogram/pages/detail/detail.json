@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "btn": "/components/btn/btn"
+  },
+  "navigationBarTitleText": "电影详情"
+}

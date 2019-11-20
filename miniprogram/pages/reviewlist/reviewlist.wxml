@@ -1,0 +1,14 @@
+<view class="bg">
+  <view class="lists">
+    <view class="list" bindtap="onTapReviewDetail" wx:for='{{review}}' wx:key="id" id="{{item._id}}">
+      <view class="user">
+        <image class="avatar" src="{{item.avatar}}"></image>
+        <view class="username">{{item.username}}</view>
+      </view>
+      <text class="content">{{item.content}}</text>
+    </view>
+  </view>
+</view>
+<view class="footer flex_lr">
+  <view class="flex_cm footer-btn" bindtap="onTapHome">返回首页</view>
+</view>

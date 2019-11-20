@@ -1,0 +1,11 @@
+<view class="bg">
+  <view class="lists">
+    <view class="hot" wx:for='{{movie}}' wx:key="id" bindtap="onTapDetail" id="{{item._id}}">
+      <image class="hot-image" src="{{item.image}}" mode="aspectFit"></image>
+      <view class="hot-content">
+        <view class="hot-name">{{item.name}}</view>
+        <view class="hot-type">类型: {{item.type}}</view>
+      </view>
+    </view>
+  </view>
+</view>

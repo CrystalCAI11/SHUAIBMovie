@@ -1,0 +1,15 @@
+<view class="bg">
+  <view class="box">
+    <view class="poster">
+      <image class="image" src="{{movie.image}}" mode="aspectFit"></image>
+    </view>
+    <view class="content-box">
+      <view class="title">{{movie.name}}</view>
+      <view class="detail">{{movie.detail}}</view>
+      <view class="buttons">
+        <btn bindtap="onTapRead" btnicon="cuIcon-read" btntext="查看影评" id="{{movie._id}}"></btn>
+        <btn bindtap="onTapComment" btnicon="cuIcon-write" btntext="添加影评" id="{{movie._id}}"></btn>
+      </view>
+    </view>
+  </view>
+</view>

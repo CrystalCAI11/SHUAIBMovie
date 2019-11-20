@@ -1,0 +1,23 @@
+<view class="bg">
+  <view class="flex_cm" wx:if="{{!userInfo}}">
+    <login bindonLogin="onTapLogin">
+      <button bindgetuserinfo="onTapLogin" class="" open-type="getUserInfo" role="button" aria-disabled="false">请先点击这里登陆</button>
+    </login>
+  </view>
+
+  <view wx:else>
+    <view class="movie" bindtap="onTapDetail" id="{{movie._id}}">
+      <image class="movie-image" src="{{movie.image}}" mode="aspectFit"></image>
+      <view class="movie-text">{{movie.name}}</view>
+      <view class="flex_cm" bindtap="onTapReviewDetail" id="{{review._id}}">
+      <image class="avatar" src="{{review.avatar}}"></image> 
+      <text>  {{review.username}}给您推荐了一部电影</text>
+      </view>
+
+      <view class="footer flex_lr">
+        <view class="flex_cm footer-btn cuIcon-appreciate" bindtap="onTapHot">热门</view>
+        <view class="flex_cm footer-btn cuIcon-friendfavor" bindtap="onTapMe">我的</view>
+      </view>
+    </view>
+  </view>
+</view>

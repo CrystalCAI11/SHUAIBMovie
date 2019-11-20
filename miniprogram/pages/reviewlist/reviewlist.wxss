@@ -1,0 +1,40 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 8%;
+  width: 100%;
+  background: white;
+  border-top: 1rpx solid grey;
+}
+
+.footer-btn {
+  width: 100%;
+  height: 100%;
+  color: grey;
+}
+
+.list {
+  background: white;
+  display: flex;
+  width: 80%;
+  height: 200rpx;
+  flex-direction: column;
+  margin: 15rpx;
+  padding: 30rpx;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.content {
+  padding: 20rpx;
+  color: gray;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+

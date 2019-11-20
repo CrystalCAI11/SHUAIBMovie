@@ -1,0 +1,17 @@
+<view class="bg">
+  <view class="box">
+    <view class="poster">
+      <image class="image" src="{{movie.image}}" mode="aspectFit"></image>
+    </view>
+    <view class="content-box">
+      <view class="title">{{movie.name}}</view>
+      <view class=".btn">
+        <btn btnicon="cuIcon-voice" btntext="录音" bindtouchstart='startRecord' bindtouchend='stopRecord'></btn>
+      </view>
+      <view class="review-content">
+        <textarea class="review-input" placeholder-class="review-placeholder" placeholder="请输入您的影评..." maxlength="140" bindinput="onInput"></textarea>
+      </view>
+      <view class="review-button {{!reviewContent ? 'disable' : ''}}" bindtap="onTapPreview">预览</view>
+    </view>
+  </view>
+</view>

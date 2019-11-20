@@ -1,0 +1,21 @@
+<view class="bg">
+  <view class="flex_cm" wx:if="{{!like.length}}">
+    <text>您还没有收藏过影评</text>
+  </view>
+
+  <view wx:else class="lists">
+    <view class="me" wx:for='{{like}}' wx:key="id">
+      <image class="me-image" src="{{item.movieimage}}" mode="aspectFit"></image>
+      <view class="flex_column" style="margin-left:50rpx;width:60%;">
+        <view>
+          <view class="me-moviename">{{item.moviename}}</view>
+          <view class="me-content">{{item.content}}</view>
+        </view>
+        <view class="me-user">
+          <image class="user-avatar" src="{{item.avatar}}"></image>
+          <text class="username"> {{item.username}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+.box {
+  position: relative;
+  width: 80%;
+  height: 80vh;
+  background: white;
+  margin-top: 15%;
+}
+
+.poster {
+  height: 36%;
+  position: relative;
+  top: -8%;
+}
+
+.title {
+  margin-bottom: 20rpx;
+  font-size: 40rpx;
+  font-weight: 900;
+  text-align: center;
+}
+
+.content-box {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+}
+
+.detail {
+  padding: 60rpx 100rpx;
+}
+
+
+
+

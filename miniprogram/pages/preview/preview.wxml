@@ -1,0 +1,20 @@
+<view class="bg">
+  <view class="box">
+    <view class="poster">
+      <image class="image" src="{{movie.image}}" mode="aspectFit"></image>
+    </view>
+    <view class="content-box">
+      <view class="title">{{movie.name}}</view>
+      <view class="flex_cm">
+        <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+        <text class="text">  {{userInfo.nickName}}的影评</text>
+      </view>
+      <audio wx:if="{{reviewtype==1}}" src="{{reviewContent}}"></audio> 
+      <view wx:else class="detail">{{reviewContent}}</view>
+      <view class="buttons">
+        <btn bindtap="onTapReturn" btnicon="cuIcon-edit" btntext="重新编辑"></btn>
+        <btn bindtap="onTapSubmit" btnicon="cuIcon-check" btntext="发布影评"></btn>
+      </view>
+    </view>
+  </view>
+</view>

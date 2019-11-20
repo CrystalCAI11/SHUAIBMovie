@@ -1,0 +1,29 @@
+.hot{
+  background: white;
+  display: flex;
+  width: 85%;
+  height: 300rpx;
+  margin: 15rpx;
+  align-items: center;
+}
+
+.hot-image{
+  margin-left: 0;
+  width: 30%;
+}
+
+.hot-content{
+  display: table-row;
+  margin-left: 50rpx;
+  align-items: center;
+}
+
+.hot-name{
+  font-size: 35rpx;
+	font-weight: 900;
+	line-height: 56rpx;
+}
+
+.hot-type{
+  margin-top: 30rpx;
+}

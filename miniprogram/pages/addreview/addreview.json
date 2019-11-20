@@ -1,0 +1,4 @@
+{
+  "usingComponents": {"btn":"/components/btn/btn"},
+  "navigationBarTitleText": "编辑影评"
+}

@@ -1,0 +1,10 @@
+@import "/icon.wxss";
+
+.button {
+  display: flex;
+  margin-bottom: 10%;
+  border: 1rpx solid grey;
+  padding: 15rpx;
+  align-items: center;
+  justify-content: center;
+}

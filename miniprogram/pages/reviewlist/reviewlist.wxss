@@ -17,8 +17,8 @@
 .list {
   background: white;
   display: flex;
-  width: 80%;
-  height: 200rpx;
+  width: 88%;
+  height: 220rpx;
   flex-direction: column;
   margin: 15rpx;
   padding: 30rpx;
@@ -38,3 +38,11 @@
   text-overflow: ellipsis;
 }
 
+.reviewlists {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 92%;
+  align-items: center;
+  position: fixed;
+}

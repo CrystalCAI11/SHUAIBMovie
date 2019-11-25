@@ -4,12 +4,13 @@
   </view>
 
   <view wx:else class="lists">
-    <view class="me" wx:for='{{like}}' wx:key="id">
+    <view class="me" wx:for='{{like}}' wx:key="id" bindtap="onTapReviewDetail" id="{{item.reviewid}}">
       <image class="me-image" src="{{item.movieimage}}" mode="aspectFit"></image>
       <view class="flex_column" style="margin-left:50rpx;width:60%;">
         <view>
           <view class="me-moviename">{{item.moviename}}</view>
-          <view class="me-content">{{item.content}}</view>
+          <button wx:if="{{item.reviewtype==1}}" class="cuIcon-notification" bindtap="play" style="width:30%"></button>
+          <view wx:else class="me-content">{{item.content}}</view>
         </view>
         <view class="me-user">
           <image class="user-avatar" src="{{item.avatar}}"></image>

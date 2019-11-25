@@ -9,8 +9,8 @@ Page({
   },
 
   onLoad: function(option) {
-    db.getReviewfromid(option.reviewid).then(result => {
-      const review = result.data[0]
+    db.getReviewfromid(option.reviewid).then(res => {
+      const review = res.data[0]
       this.setData({
         review: review
       })
@@ -21,8 +21,8 @@ Page({
   }, //和reviewlist相反，先set好影评数据再通过review里的movieid取电影数据
 
   getSelectedMovie(movieid) {
-    db.getSelectedMovie(movieid).then(result => {
-      const movie = result.data[0]
+    db.getSelectedMovie(movieid).then(res => {
+      const movie = res.data[0]
       this.setData({
         movie: movie
       })
@@ -69,6 +69,7 @@ Page({
       if (res.total == 0) {
         db.addLike({ //把评论上传到like库
           reviewid: this.data.review._id,
+          reviewtype: this.data.review.reviewtype,
           username: this.data.review.username,
           avatar: this.data.review.avatar,
           content: this.data.review.content,
@@ -90,4 +91,10 @@ Page({
       }
     })
   },
+
+  play() {
+    const record = wx.createInnerAudioContext()
+    record.src = this.data.review.content
+    record.play()
+  }, //播放录音
 })

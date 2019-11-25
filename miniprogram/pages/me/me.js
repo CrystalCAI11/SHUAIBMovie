@@ -6,7 +6,7 @@ Page({
     openid: '',
     like: [],
   },
-  
+
   onLoad(option) {
     this.setData({
       openid: option.openid
@@ -22,4 +22,7 @@ Page({
     })
   },
 
+  onTapReviewDetail(event) {
+    util.onTapReviewDetail(event)
+  },
 })

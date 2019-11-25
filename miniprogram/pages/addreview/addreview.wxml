@@ -5,7 +5,7 @@
     </view>
     <view class="content-box">
       <view class="title">{{movie.name}}</view>
-      <view class=".btn">
+      <view class="btn">
         <btn btnicon="cuIcon-voice" btntext="录音" bindtouchstart='startRecord' bindtouchend='stopRecord'></btn>
       </view>
       <view class="review-content">

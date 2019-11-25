@@ -1,14 +1,17 @@
 <view class="bg">
-  <view class="lists">
-    <view class="list" bindtap="onTapReviewDetail" wx:for='{{review}}' wx:key="id" id="{{item._id}}">
+  <scroll-view scroll-y wx:if="{{review.length>0}}" class="reviewlists">
+    <view class="list" bindtap="onTapReviewDetail" wx:for='{{review}}' wx:key="_id" id="{{item._id}}">
       <view class="user">
         <image class="avatar" src="{{item.avatar}}"></image>
         <view class="username">{{item.username}}</view>
       </view>
-      <text class="content">{{item.content}}</text>
+      <button wx:if="{{item.reviewtype==1}}" class="cuIcon-notification"></button>
+      <text wx:else class="content">{{item.content}}</text>
     </view>
-  </view>
+  </scroll-view>
+  <view wx:else class="flex_cm">该影片暂无影评</view>
 </view>
+
 <view class="footer flex_lr">
   <view class="flex_cm footer-btn" bindtap="onTapHome">返回首页</view>
 </view>

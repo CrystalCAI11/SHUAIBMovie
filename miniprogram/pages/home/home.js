@@ -6,7 +6,7 @@ Page({
   data: {
     userInfo: null,
     movie: {},
-    review: [],
+    review: {},
   },
 
   onShow() {
@@ -20,43 +20,41 @@ Page({
   },
 
   onLoad() {
-    this.getHomeMovie()
     this.getOpenid()
+    this.getHomeMovie()
   },
 
   onPullDownRefresh() {
+    this.setData({
+      review: {} //清空影评缓存
+    })
     this.onLoad()
     wx.stopPullDownRefresh()
   },
 
   getHomeMovie() {
-    wx.showLoading({
-      title: '加载中...',
-    })
-
-    db.getMovie(1).then(result => {
-      wx.hideLoading()
-      const data = result.list
-      this.getReview(data[0]._id)
+    db.getMovie(1).then(res => {
       this.setData({
-        movie: data[0],
+        movie: res.list[0],
       })
-    }).catch(err => {
-      console.error(err)
-      wx.hideLoading()
+      let movieid = this.data.movie._id
+      this.getReview(movieid)
     })
   },
 
   getReview(movieid) {
-    db.getSelectedReview(movieid).then(result => {
-      const data = result.data[0]
-      if (data) {
+    db.getSelectedReview(movieid).then(res => {
+      if (res.data.length > 0) {
+        const review = res.data[0]
         this.setData({
-          review: data
+          review: review
+        })
+      } else {
+        console.log('暂时还没有用户评论过该影片')
+        this.setData({
+          review: 1
         })
       }
-    }).catch(err => {
-      console.error(err)
     })
   },
 

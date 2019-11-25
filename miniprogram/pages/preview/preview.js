@@ -10,7 +10,9 @@ Page({
     reviewtype: '',
   },
 
+
   onLoad: function(option) {
+    console.log(option)
     let movie = JSON.parse(option.movie)
     let userInfo = JSON.parse(option.userInfo)
     let reviewContent = option.reviewContent
@@ -19,39 +21,41 @@ Page({
       userInfo: userInfo,
       reviewContent: reviewContent,
     })
+
     let str = this.data.reviewContent
-    let reviewtype = this.data.reviewtype
-    if (str.search("http://tmp/") != -1) {
+    console.log(str)
+    if (str.search(".mp3") != -1) {
       this.setData({
         reviewtype: "1", //录音类型的reviewcontent
       })
-
+    } else {
+      this.setData({
+        reviewtype: "2", //文字类型的reviewcontent
+      })
     }
   },
 
-  play: function() {
-    innerAudioContext.autoplay = true
-    innerAudioContext.src = this.data.reviewContent
-    innerAudioContext.onPlay(() => {
-      console.log('开始播放')
-    })
-  },
+  play() {
+    const record = wx.createInnerAudioContext()
+    record.src = this.data.reviewContent
+    record.play()
+  }, //播放录音预览
 
   onTapReturn() {
     wx.navigateBack({})
   },
 
   onTapSubmit(event) {
-    let content = this.data.reviewContent
-    if (!content) return
     wx.showLoading({
       title: '提交中...'
     })
+    // this.uploadRecord()
     db.addReview({ //把评论上传到云数据库
       username: this.data.userInfo.nickName,
       avatar: this.data.userInfo.avatarUrl,
-      content,
-      movieid: this.data.movie._id
+      content: this.data.reviewContent,
+      movieid: this.data.movie._id,
+      reviewtype: this.data.reviewtype
     }).then(result => {
       wx.hideLoading()
       const data = result.result
@@ -66,7 +70,6 @@ Page({
         }, 1500)
       }
     }).catch(err => {
-      console.error(err)
       wx.showToast({
         icon: 'none',
         title: '提交失败'

@@ -9,6 +9,7 @@ exports.main = async(event, context) => {
     data: {
       avatar: event.avatar,
       reviewid: event.reviewid,
+      reviewtype: event.reviewtype,
       username: event.username,
       content: event.content,
       movieimage: event.movieimage,

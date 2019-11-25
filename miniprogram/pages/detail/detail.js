@@ -35,10 +35,7 @@ Page({
     })
   }, //点击添加影评按钮弹出actionsheet
 
-
   onTapSheet(event) {
     util.onTapSheet(event)
-  } //点击actionsheet添加影评
-
-
+  }, //点击actionsheet添加影评
 })

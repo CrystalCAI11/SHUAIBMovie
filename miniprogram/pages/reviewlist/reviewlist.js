@@ -8,27 +8,24 @@ Page({
   },
 
   onLoad: function(option) {
-    db.getSelectedMovie(option.movieid).then(result => {
-      const movie = result.data[0]
+    db.getSelectedMovie(option.movieid).then(res => {
+      const movie = res.data[0]
       this.setData({
         movie: movie
       })
     }).then(() => {
       this.getReview(this.data.movie._id)
-    })//先set好电影数据再用电影id取影评
+    }) //先set好电影数据再用电影id取影评
   },
 
   getReview(movieid) {
-    db.getSelectedReview(movieid).then(result => {
-      const data = result.data
-      let review = []
-      if (data) {
+    db.getSelectedReview(movieid).then(res => {
+      console.log(res.data)
+      if (res.data) {
         this.setData({
-          review: data
+          review: res.data
         })
       }
-    }).catch(err => {
-      console.error(err)
     })
   },
 

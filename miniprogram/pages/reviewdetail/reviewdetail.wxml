@@ -3,13 +3,16 @@
     <view class="poster">
       <image class="image" src="{{movie.image}}" mode="aspectFit"></image>
     </view>
+
     <view class="content-box">
       <view class="title">{{movie.name}}</view>
       <view class="flex_cm">
         <image class="avatar" src="{{review.avatar}}"></image>
         <text>  {{review.username}}的影评</text>
       </view>
-      <view class="detail">{{review.content}}</view>
+      <button wx:if="{{review.reviewtype==1}}" class="cuIcon-notification" bindtap="play"></button>
+      <view wx:else class="detail">{{review.content}}</view>
+
       <view class="buttons">
         <btn bindtap="onTapLike" btnicon="cuIcon-like" btntext="收藏影评"></btn>
         <btn bindtap="onTapComment" btnicon="cuIcon-write" btntext="添加影评" id="{{movie._id}}"></btn>

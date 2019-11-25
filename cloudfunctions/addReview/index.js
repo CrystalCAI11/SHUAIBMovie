@@ -7,11 +7,12 @@ exports.main = async (event, context) => {
   const user = wxContext.OPENID
   await db.collection('review').add({
     data: {
-      user,
+      user,//openid
       username: event.username,
       movieid:event.movieid,
       avatar: event.avatar,
       content: event.content,
+      reviewtype: event.reviewtype
     },
   })
   return {}

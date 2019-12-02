@@ -8,11 +8,11 @@ Page({
     reviewContent: '',
     userInfo: {},
     reviewtype: '',
+    play: false,
   },
 
 
   onLoad: function(option) {
-    console.log(option)
     let movie = JSON.parse(option.movie)
     let userInfo = JSON.parse(option.userInfo)
     let reviewContent = option.reviewContent
@@ -39,7 +39,18 @@ Page({
     const record = wx.createInnerAudioContext()
     record.src = this.data.reviewContent
     record.play()
-  }, //播放录音预览
+    record.onPlay((res) => {
+      this.setData({
+        play: true, //开始播放
+        reviewContent: res.tempFilePath,
+      })
+    })
+    record.onEnded((res) => {
+      this.setData({
+        play: false, //播放结束
+      })
+    })
+  }, //点击播放录音预览
 
   onTapReturn() {
     wx.navigateBack({})
@@ -49,16 +60,17 @@ Page({
     wx.showLoading({
       title: '提交中...'
     })
-    // this.uploadRecord()
     db.addReview({ //把评论上传到云数据库
       username: this.data.userInfo.nickName,
       avatar: this.data.userInfo.avatarUrl,
       content: this.data.reviewContent,
       movieid: this.data.movie._id,
+      movieimage: this.data.movie.image,
+      moviename: this.data.movie.name,
       reviewtype: this.data.reviewtype
-    }).then(result => {
+    }).then(res => {
       wx.hideLoading()
-      const data = result.result
+      const data = res.result
       if (data) {
         wx.showToast({
           title: '提交成功'

@@ -12,7 +12,7 @@ module.exports = {
 
   getSelectedMovie(movieid) {
     return db.collection('movie').where({
-      _id: movieid,
+      _id: movieid
     }).get()
   }, //通过电影id从云数据库获取选中的电影
 
@@ -43,6 +43,12 @@ module.exports = {
     }).get()
   }, //通过reviewid从云数据库取影评
 
+  getReviewfromopenid(openid) {
+    return db.collection('review').where({
+      user: openid
+    }).get()
+  }, //通过openid从云数据库取影评
+
   addLike(data) {
     return wx.cloud.callFunction({
       name: 'addLike',
@@ -62,4 +68,12 @@ module.exports = {
       reviewid: reviewid,
     }).count() //check同一个openid是否收藏过同一个影评
   },
+
+  getMyReview(openid, movieid) {
+    return db.collection('review').where({
+      user: openid,
+      movieid: movieid,
+    }).get()
+  },//详情页面用于判断是否评价过该影片
+
 }

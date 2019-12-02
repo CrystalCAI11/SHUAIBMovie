@@ -4,25 +4,26 @@ const db = require('../../utils/db')
 Page({
   data: {
     openid: '',
-    like: [],
+    review: [],
   },
 
-  onLoad(option) {
+  onLoad: function(option) {
     this.setData({
-      openid: option.openid
+      openid: option.openid,
     })
-    this.getLike(this.data.openid)
+    this.getMyReview()
   },
 
   onPullDownRefresh() {
-    this.getLike(this.data.openid)
+    this.getMyReview()
     wx.stopPullDownRefresh()
   },
 
-  getLike(openid) {
-    db.getLike(openid).then(res => {
+  getMyReview() {
+    let openid = this.data.openid
+    db.getReviewfromopenid(openid).then(res => {
       this.setData({
-        like: res.data
+        review: res.data
       })
     })
   },
@@ -31,9 +32,9 @@ Page({
     util.onTapReviewDetail(event)
   },
 
-  onTapMyreview() {
-    wx.navigateTo({
-      url: '../myreview/myreview?openid=' + this.data.openid,
+  onTapMe() {
+    wx.navigateBack({
+      delta: 1
     })
   },
 })

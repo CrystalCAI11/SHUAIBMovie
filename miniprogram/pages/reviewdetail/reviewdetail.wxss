@@ -27,8 +27,7 @@
 
 .detail {
   padding: 60rpx 100rpx;
+  overflow: auto;
+  word-break: break-all;
+  height: 100rpx;
 }
-
-
-
-

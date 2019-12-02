@@ -1,11 +1,11 @@
 <view class="bg">
   <view class="box">
     <view class="poster">
-      <image class="image" src="{{movie.image}}" mode="aspectFit"></image>
+      <image class="image" src="{{review.movieimage}}" mode="aspectFit"></image>
     </view>
 
     <view class="content-box">
-      <view class="title">{{movie.name}}</view>
+      <view class="title">{{review.moviename}}</view>
       <view class="flex_cm">
         <image class="avatar" src="{{review.avatar}}"></image>
         <text>  {{review.username}}的影评</text>
@@ -15,7 +15,7 @@
 
       <view class="buttons">
         <btn bindtap="onTapLike" btnicon="cuIcon-like" btntext="收藏影评"></btn>
-        <btn bindtap="onTapComment" btnicon="cuIcon-write" btntext="添加影评" id="{{movie._id}}"></btn>
+        <btn bindtap="onTapComment" btnicon="cuIcon-write" btntext="添加影评" id="{{review.movieid}}"></btn>
       </view>
     </view>
   </view>

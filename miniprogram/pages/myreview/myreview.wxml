@@ -1,9 +1,9 @@
 <view class="bg">
-  <view class="flex_cm" wx:if="{{!like.length}}">
-    <text>您还没有收藏过影评</text>
+  <view class="flex_cm" wx:if="{{!review.length}}">
+    <text>您还没有评论过电影</text>
   </view>
   <view wx:else class="lists">
-    <view class="me" wx:for='{{like}}' wx:key="id" bindtap="onTapReviewDetail" id="{{item.reviewid}}">
+    <view class="me" wx:for='{{review}}' wx:key="id" bindtap="onTapReviewDetail" id="{{item._id}}">
       <image class="me-image" src="{{item.movieimage}}" mode="aspectFit"></image>
       <view class="flex_column" style="margin-left:50rpx;width:60%;">
         <view>
@@ -19,6 +19,6 @@
     </view>
   </view>
   <view class="footer flex_lr">
-  <view class="flex_cm footer-btn" bindtap="onTapMyreview">我发布的影评</view>
+  <view class="flex_cm footer-btn" bindtap="onTapMe">我收藏的影评</view>
 </view>
 </view>

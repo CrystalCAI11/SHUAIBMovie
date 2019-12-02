@@ -1,19 +1,5 @@
 @import "icon.wxss";
 
-.flex_m {
-  display: flex;
-  align-items: center;
-}
-
-/* 垂直居中 */
-
-.flex_c {
-  display: flex;
-  justify-content: center;
-}
-
-/* 水平居中 */
-
 .flex_column {
   display: flex;
   flex-direction: column;
@@ -44,7 +30,7 @@
 /* 水平垂直居中 */
 
 .bg {
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -108,4 +94,20 @@
   margin-bottom: 10%;
   border: 1rpx solid grey;
   padding: 15rpx;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 8%;
+  width: 100%;
+  background: white;
+  border-top: 1rpx solid grey;
+}
+
+.footer-btn {
+  width: 100%;
+  height: 100%;
+  color: grey;
 }

@@ -22,7 +22,7 @@
 
     <view class="footer flex_lr">
       <view class="flex_cm footer-btn cuIcon-appreciate" bindtap="onTapHot">热门</view>
-      <view class="flex_cm footer-btn cuIcon-friendfavor" bindtap="onTapMe">我的</view>
+      <view class="flex_cm footer-btn cuIcon-my" bindtap="onTapMe">我的</view>
     </view>
   </view>
 </view>

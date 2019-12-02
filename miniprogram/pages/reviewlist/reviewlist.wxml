@@ -1,5 +1,5 @@
 <view class="bg">
-  <scroll-view scroll-y wx:if="{{review.length>0}}" class="reviewlists">
+  <view wx:if="{{review.length>0}}" class="reviewlists">
     <view class="list" bindtap="onTapReviewDetail" wx:for='{{review}}' wx:key="_id" id="{{item._id}}">
       <view class="user">
         <image class="avatar" src="{{item.avatar}}"></image>
@@ -8,7 +8,7 @@
       <button wx:if="{{item.reviewtype==1}}" class="cuIcon-notification"></button>
       <text wx:else class="content">{{item.content}}</text>
     </view>
-  </scroll-view>
+  </view>
   <view wx:else class="flex_cm">该影片暂无影评</view>
 </view>
 

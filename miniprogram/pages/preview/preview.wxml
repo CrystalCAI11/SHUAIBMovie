@@ -9,7 +9,7 @@
         <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
         <text class="text">  {{userInfo.nickName}}的影评</text>
       </view>
-      <button class="cuIcon-notification" bindtap="play" wx:if="{{reviewtype==1}}"></button>
+      <button class="cuIcon-notification{{!play ? '' : 'fill'}}" bindtap="play" wx:if="{{reviewtype==1}}"></button>
       <view wx:else class="detail">{{reviewContent}}</view>
       <view class="buttons">
         <btn bindtap="onTapReturn" btnicon="cuIcon-edit" btntext="重新编辑"></btn>

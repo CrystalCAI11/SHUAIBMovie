@@ -8,7 +8,8 @@
       <view class="detail">{{movie.detail}}</view>
       <view class="buttons">
         <btn bindtap="onTapRead" btnicon="cuIcon-read" btntext="查看影评" id="{{movie._id}}"></btn>
-        <btn bindtap="onTapComment" btnicon="cuIcon-write" btntext="添加影评" id="{{movie._id}}"></btn>
+        <btn wx:if="{{myreviewid}}" bindtap="onTapReviewDetail" btnicon="cuIcon-my" btntext="我的影评" id="{{review._id}}"></btn>
+        <btn wx:else bindtap="onTapComment" btnicon="cuIcon-write" btntext="添加影评" id="{{movie._id}}"></btn>
       </view>
     </view>
   </view>

@@ -5,10 +5,11 @@
     </view>
     <view class="content-box">
       <view class="title">{{movie.name}}</view>
-      <view class="btn">
-        <btn btnicon="cuIcon-voice" btntext="录音" bindtouchstart='startRecord' bindtouchend='stopRecord'></btn>
+      <view wx:if="{{reviewtype==1}}" class="btn">
+        <btn wx:if="{{!record}}" btnicon="cuIcon-voice" btntext="录音" bindtouchstart='startRecord' bindtouchend='stopRecord'></btn>
+        <btn wx:else btnicon="cuIcon-voicefill" btntext="录音中" bindtouchstart='startRecord' bindtouchend='stopRecord'></btn>
       </view>
-      <view class="review-content">
+      <view wx:else class="review-content">
         <textarea class="review-input" placeholder-class="review-placeholder" placeholder="请输入您的影评..." maxlength="140" bindinput="onInput"></textarea>
       </view>
       <view class="review-button {{!reviewContent ? 'disable' : ''}}" bindtap="onTapPreview">预览</view>

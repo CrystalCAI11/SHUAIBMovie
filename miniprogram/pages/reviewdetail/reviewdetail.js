@@ -4,7 +4,6 @@ const util = require('../../utils/util')
 Page({
   data: {
     openid: '',
-    movie: {},
     review: {},
   },
 
@@ -14,21 +13,8 @@ Page({
       this.setData({
         review: review
       })
-    }).then(() => {
-      this.getSelectedMovie(this.data.review.movieid)
-      this.getOpenid()
     })
-  }, //和reviewlist相反，先set好影评数据再通过review里的movieid取电影数据
-
-  getSelectedMovie(movieid) {
-    db.getSelectedMovie(movieid).then(res => {
-      const movie = res.data[0]
-      this.setData({
-        movie: movie
-      })
-    }).catch(err => {
-      console.error(err)
-    })
+    this.getOpenid()
   },
 
   getOpenid() {
@@ -48,8 +34,11 @@ Page({
       success: res => {
         let tapIndex = res.tapIndex;
         console.log(tapIndex)
-        if (tapIndex == 0 || tapIndex == 1) {
-          this.onTapSheet(event)
+        if (tapIndex == 0) {
+          this.onTapWrite(event)
+        }
+        if (tapIndex == 1) {
+          this.onTapRecord(event)
         }
       },
       fail(res) {
@@ -58,9 +47,17 @@ Page({
     })
   }, //点击添加影评按钮弹出actionsheet
 
-  onTapSheet(event) {
-    util.onTapSheet(event)
-  }, //点击actionsheet添加影评
+  onTapWrite(event) {
+    wx.navigateTo({
+      url: '../addreview/addreview?movieid=' + event.currentTarget.id + '&reviewtype=2'
+    })
+  },//选择文字影评，把影评类型参数设为2
+
+  onTapRecord(event) {
+    wx.navigateTo({
+      url: '../addreview/addreview?movieid=' + event.currentTarget.id + '&reviewtype=1',
+    })
+  },//选择录音影评，把影评类型参数设为1
 
   onTapLike(event) {
     let openid = this.data.openid

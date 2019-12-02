@@ -33,12 +33,6 @@ module.exports = {
     })
   }, //点击跳转至电影详情页
 
-  onTapSheet(event) {
-    wx.navigateTo({
-      url: '../addreview/addreview?movieid=' + event.currentTarget.id,
-    })
-  }, //点击actionsheet跳转至影评编辑页
-
   onTapRead(event) {
     wx.navigateTo({
       url: '../reviewlist/reviewlist?movieid=' + event.currentTarget.id,

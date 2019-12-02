@@ -28,8 +28,7 @@
 
 .detail {
   padding: 30rpx 100rpx;
-  overflow: auto;
   height: 200rpx;
-  white-space: wrap;
-  text-overflow: ellipsis;
+  overflow: auto;
+  word-break: break-all;
 }

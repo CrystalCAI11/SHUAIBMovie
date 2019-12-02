@@ -1,19 +1,3 @@
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  height: 8%;
-  width: 100%;
-  background: white;
-  border-top: 1rpx solid grey;
-}
-
-.footer-btn {
-  width: 100%;
-  height: 100%;
-  color: grey;
-}
-
 .list {
   background: white;
   display: flex;

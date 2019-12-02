@@ -3,16 +3,21 @@ const util = require('../../utils/util')
 
 Page({
   data: {
+    reviewtype:'',
     movie: {},
     reviewContent: '',
     userInfo: {},
+    record: false, //默认松开按钮
   },
 
   onLoad: function(option) {
-    db.getSelectedMovie(option.movieid).then(result => {
-      const movie = result.data[0]
+    console.log(option)
+    this.setData({
+      reviewtype: option.reviewtype,
+    })
+    db.getSelectedMovie(option.movieid).then(res => {
       this.setData({
-        movie: movie
+        movie: res.data[0]
       })
     })
     this.getUserInfo()
@@ -32,7 +37,7 @@ Page({
     })
   }, //文字评论输入框
 
-  startRecord() {//开发工具里不会录成mp3音频，真机调试是好的
+  startRecord() { //开发工具里不会录成mp3音频，真机调试是好的
     const options = {
       duration: 60000,
       sampleRate: 44100,
@@ -43,7 +48,9 @@ Page({
     }
     wx.getRecorderManager().start(options)
     wx.getRecorderManager().onStart((res) => {
-      console.log('开始录音')
+      this.setData({
+        record: true, //按下录音按钮
+      })
     })
   }, //把临时录音文件存成mp3传参给预览页
 
@@ -52,6 +59,7 @@ Page({
     wx.getRecorderManager().stop()
     wx.getRecorderManager().onStop((res) => {
       this.setData({
+        record: false, //松开录音按钮
         reviewContent: res.tempFilePath
       })
       wx.showModal({

@@ -49,3 +49,8 @@
 .username {
   font-size: 25rpx;
 }
+
+.me-user{
+  position: relative;
+  top:10rpx;
+}
